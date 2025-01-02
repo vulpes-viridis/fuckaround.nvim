@@ -11,7 +11,9 @@ return { -- LSP Plugins
       },
     },
   },
+
   { 'Bilal2453/luvit-meta', lazy = true },
+
   {
     -- Main LSP Configuration
     'neovim/nvim-lspconfig',
@@ -142,6 +144,30 @@ return { -- LSP Plugins
       capabilities = vim.tbl_deep_extend('force', capabilities, require('cmp_nvim_lsp').default_capabilities())
 
       local servers = {
+        clangd = {
+          settings = {
+            {
+              cmd = { 'clangd', '--background-index', '--clang-tidy', '--log=verbose' },
+              init_options = {
+                fallbackFlags = { '-std=c++17' },
+              },
+            },
+          },
+        },
+
+        pylsp = {
+          settings = {
+            pylsp = {
+              plugins = {
+                ruff = {
+                  enabled = true,
+                  format_enable = true,
+                },
+              },
+            },
+          },
+        },
+
         lua_ls = {
           settings = {
             Lua = {

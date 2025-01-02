@@ -17,6 +17,9 @@ return { -- Collection of various small independent plugins/modules
     vim.keymap.set({ 'n', 'x' }, 's', '<Nop>')
     require('mini.surround').setup {}
 
+    -- Move selections around in any direction
+    require('mini.move').setup {}
+
     -- Simple and easy statusline.
     local statusline = require 'mini.statusline'
     -- set use_icons to true if you have a Nerd Font
